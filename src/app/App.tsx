@@ -1,8 +1,17 @@
 import React from 'react';
 
+import {ReduxProvider} from './Redux';
+import Inputs from './Inputs';
+import TextBlue from './TextBlue';
+import TextRed from './TextRed';
+
 function App() {
 	return (
-		<div>oi</div>
+		<ReduxProvider>
+			<Inputs />
+			<TextBlue />
+			<TextRed />
+		</ReduxProvider>
 	);
 }
 
