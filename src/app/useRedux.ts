@@ -3,7 +3,10 @@ import * as ReactRedux from 'react-redux';
 
 // Initial state to be kept into Redux store.
 const initialState = {
-	name: '',
+	person: {
+		name: '', // when nested, name or surname changes will trigger all person subscribers
+		surname: ''
+	},
 	city: ''
 };
 
@@ -27,11 +30,11 @@ function createReduxStore() {
 const ReduxProvider = ReactRedux.Provider;
 
 // Custom hook that returns a get/set pair to Redux store.
-function useRedux(key: ActionTypeT) {
-	const value = ReactRedux.useSelector((state: StateT) => state[key]);
+function useRedux<AcT extends ActionTypeT>(key: AcT) {
+	const value = ReactRedux.useSelector((state: StateT) => state[key]) as typeof initialState[AcT];
 	const dispatch = ReactRedux.useDispatch();
 
-	function setValue(newVal: typeof initialState[typeof key]) {
+	function setValue(newVal: typeof initialState[AcT]) {
 		dispatch({type: key, payload: newVal});
 	}
 

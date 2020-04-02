@@ -4,10 +4,10 @@ import useRedux from './useRedux';
 
 function ViewName() {
 	console.log('NAME');
-	const [name] = useRedux('name');
+	const [person] = useRedux('person');
 
 	return (
-		<div style={{color: 'blue'}}>Name: {name}</div>
+		<div style={{color: 'blue'}}>Name: {person.name}</div>
 	);
 }
 
