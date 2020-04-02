@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {useRedux} from './Redux';
+import useRedux from './useRedux';
 
-function TextBlue() {
-	console.log('BLUE');
+function ViewName() {
+	console.log('NAME');
 	const [name] = useRedux('name');
 
 	return (
@@ -11,4 +11,4 @@ function TextBlue() {
 	);
 }
 
-export default TextBlue;
+export default ViewName;

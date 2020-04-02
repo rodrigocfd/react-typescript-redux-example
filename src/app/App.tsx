@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {ReduxProvider} from './Redux';
+import {createReduxStore, ReduxProvider} from './useRedux';
 import Inputs from './Inputs';
-import TextBlue from './TextBlue';
-import TextRed from './TextRed';
+import ViewName from './ViewName';
+import ViewCity from './ViewCity';
 
 function App() {
 	return (
-		<ReduxProvider>
+		<ReduxProvider store={createReduxStore()}>
 			<Inputs />
-			<TextBlue />
-			<TextRed />
+			<ViewName />
+			<ViewCity />
 		</ReduxProvider>
 	);
 }

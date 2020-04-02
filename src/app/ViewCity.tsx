@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {useRedux} from './Redux';
+import useRedux from './useRedux';
 
-function TextRed() {
-	console.log('RED');
+function ViewCity() {
+	console.log('CITY');
 	const [city] = useRedux('city');
 
 	return (
@@ -11,4 +11,4 @@ function TextRed() {
 	);
 }
 
-export default TextRed;
+export default ViewCity;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useRedux} from './Redux';
+import useRedux from './useRedux';
 
 function Inputs() {
 	const [name, setName] = useRedux('name');

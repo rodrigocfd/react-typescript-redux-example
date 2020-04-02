@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 
@@ -19,20 +18,13 @@ function reducer<K extends ActionTypeT>(state = initialState, action: ActionT<K>
 		: state;
 }
 
-const store = Redux.createStore<StateT, any, unknown, unknown>(reducer);
+// Creates the Redux store, with our reducer function.
+function createReduxStore() {
+	return Redux.createStore<StateT, any, unknown, unknown>(reducer);
+}
 
 // Redux provider, should wrap the root application component.
-type ReduxProviderProps = {
-	children: React.ReactNode
-};
-
-function ReduxProvider({children}: ReduxProviderProps) {
-	return (
-		<ReactRedux.Provider store={store}>
-			{children}
-		</ReactRedux.Provider>
-	);
-}
+const ReduxProvider = ReactRedux.Provider;
 
 // Custom hook that returns a get/set pair to Redux store.
 function useRedux(key: ActionTypeT) {
@@ -46,4 +38,5 @@ function useRedux(key: ActionTypeT) {
 	return [value, setValue] as const;
 }
 
-export {ReduxProvider, useRedux};
+export {createReduxStore, ReduxProvider}
+export default useRedux;
