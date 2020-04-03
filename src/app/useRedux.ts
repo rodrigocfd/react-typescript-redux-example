@@ -34,8 +34,15 @@ function useRedux<AcT extends ActionTypeT>(key: AcT) {
 	const value = ReactRedux.useSelector((state: StateT) => state[key]) as typeof initialState[AcT];
 	const dispatch = ReactRedux.useDispatch();
 
-	function setValue(newVal: typeof initialState[AcT]) {
-		dispatch({type: key, payload: newVal});
+	type KeyT = typeof initialState[AcT];
+	type ValT<KeyT> = KeyT extends object ? Partial<KeyT> : KeyT; // if value is an object, accept Partial
+
+	function setValue(newVal: ValT<KeyT>) {
+		if (typeof newVal === 'object') {
+			dispatch({type: key, payload: {...(value as object), ...(newVal as object)}});
+		} else {
+			dispatch({type: key, payload: newVal});
+		}
 	}
 
 	return [value, setValue] as const;

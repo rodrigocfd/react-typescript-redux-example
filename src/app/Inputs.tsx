@@ -9,11 +9,11 @@ function Inputs() {
 	return (<>
 		<div>
 			Name <input type="text" autoComplete="off" value={person.name}
-				onChange={e => setPerson({...person, name: e.target.value})} />
+				onChange={e => setPerson({name: e.target.value})} />
 		</div>
 		<div>
-			Surname <input type="text" autoComplete="off" value={person.name}
-				onChange={e => setPerson({...person, surname: e.target.value})} />
+			Surname <input type="text" autoComplete="off" value={person.surname}
+				onChange={e => setPerson({surname: e.target.value})} />
 		</div>
 		<div>
 			City <input type="text" autoComplete="off" value={city}
