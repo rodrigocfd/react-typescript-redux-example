@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {createReduxStore, ReduxProvider} from './useRedux';
 import Inputs from './Inputs';
 import ViewName from './ViewName';

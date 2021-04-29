@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useRedux from './useRedux';
 
 function ViewCity() {
