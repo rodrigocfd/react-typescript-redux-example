@@ -1,11 +1,10 @@
 import useRedux from './useRedux';
 
 function ViewCity() {
-	console.log('CITY');
 	const [city] = useRedux('city');
 
 	return (
-		<div style={{color: 'red'}}>City: {city}</div>
+		<div style={{color: 'blue'}}>Name: {city}</div>
 	);
 }
 

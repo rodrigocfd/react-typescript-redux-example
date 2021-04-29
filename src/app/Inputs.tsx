@@ -1,21 +1,21 @@
 import useRedux from './useRedux';
 
 function Inputs() {
-	const [person, setPerson] = useRedux('person');
 	const [city, setCity] = useRedux('city');
+	const [street, setStreet] = useRedux('street');
+	const [houseNo, setHouseNo] = useRedux('houseNo');
 
 	return (<>
 		<div>
-			Name <input type="text" autoComplete="off" value={person.name}
-				onChange={e => setPerson({name: e.target.value})} />
-		</div>
-		<div>
-			Surname <input type="text" autoComplete="off" value={person.surname}
-				onChange={e => setPerson({surname: e.target.value})} />
-		</div>
-		<div>
 			City <input type="text" autoComplete="off" value={city}
 				onChange={e => setCity(e.target.value)} />
+		</div>
+
+		<div>
+			Street <input type="text" autoComplete="off" value={street}
+				onChange={e => setStreet(e.target.value)} />,
+			no. <input type="number" autoComplete="off" min="0" value={houseNo}
+				onChange={e => setHouseNo(parseInt(e.target.value) || 0)} />
 		</div>
 	</>);
 }

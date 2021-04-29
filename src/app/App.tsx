@@ -1,16 +1,16 @@
 import {createReduxStore, ReduxProvider} from './useRedux';
 import Inputs from './Inputs';
-import ViewName from './ViewName';
-import ViewSurname from './ViewSurname';
 import ViewCity from './ViewCity';
+import ViewAddress from './ViewAddress';
 
 function App() {
 	return (
 		<ReduxProvider store={createReduxStore()}>
+			<h1>Redux Example</h1>
 			<Inputs />
-			<ViewName />
-			<ViewSurname />
+			<hr />
 			<ViewCity />
+			<ViewAddress />
 		</ReduxProvider>
 	);
 }

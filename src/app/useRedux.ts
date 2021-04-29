@@ -1,15 +1,19 @@
+/**
+ * Usage of this file can be seen at:
+ * https://github.com/rodrigocfd/react-typescript-redux-example
+ */
+
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 
 /**
  * Initial state to be kept into Redux store, which will infer the type.
+ * This is the _ONLY THING_ you need to change in this file.
  */
 const initialState = {
-	person: {
-		name: '', // when nested, name or surname changes will trigger all person subscribers
-		surname: ''
-	},
 	city: '',
+	street: '',
+	houseNo: 0,
 };
 
 type StateT = typeof initialState;
@@ -49,7 +53,7 @@ function useRedux<AcT extends ActionTypeT>(key: AcT) {
 
 	function setValue(newVal: ValT<KeyT>) {
 		if (typeof newVal === 'object') {
-			dispatch({ type: key, payload: { ...(value as object), ...(newVal as object) } });
+			dispatch({ type: key, payload: { ...(value as unknown as object), ...(newVal as object) } });
 		} else {
 			dispatch({ type: key, payload: newVal });
 		}
